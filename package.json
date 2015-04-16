@@ -1,6 +1,6 @@
 {
   "name": "generator-koa-angular",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A yeoman generator using koa.js and angular.js",
   "main": "index.js",
   "files": [
@@ -29,6 +29,6 @@
   },
   "homepage": "https://github.com/prekolna/generator-koa-angular",
   "dependencies": {
-    "yeoman-generator": "^0.18.10"
+    "yeoman-generator": "^0.19.1"
   }
 }
