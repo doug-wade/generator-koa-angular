@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+- '0.12'
+- '0.11'
+- iojs
+deploy:
+  provider: npm
+  email: douglas.b.wade@gmail.com
+  api_key:
+    secure: M7FWHGbOb1PNArwQmPU23mld8HAgZ4WoYTxFPzVd4adz2X6ZXbNzaEOhgqcZ9iIcHjEk4fCK9IyiGyNsWIwo+927JH2R/f7tQ3wmnIlvnFWfmFKpwa8gG6//LwsiGwZLENK6wx2fC6949rbp+8lg1BT6yMiqcaXk8+x0avSyNus=
+  on:
+    tags: true
+    repo: prekolna/generator-koa-angular
