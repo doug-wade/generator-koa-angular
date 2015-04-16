@@ -1,12 +1,12 @@
 {
   "name": "generator-koa-angular",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A yeoman generator using koa.js and angular.js",
   "main": "index.js",
   "files": [],
   "repository": {
     "type": "git",
-    "url": "https://github.com/prekolna/generator-koa-angular"
+    "url": "git://github.com/prekolna/generator-koa-angular"
   },
   "keywords": [
     "yeoman-generator",
@@ -16,7 +16,11 @@
     "koa",
     "gulp"
   ],
-  "author": "Douglas Wade",
+  "author": {
+    "name": "Douglas Wade",
+    "email": "douglas.b.wade@gmail.com",
+    "url": "https://github.com/prekolna"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/prekolna/generator-koa-angular/issues"
