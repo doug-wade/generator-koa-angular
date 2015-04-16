@@ -1,0 +1,15 @@
+doctype html
+html(lang="en")
+  head
+    title <%= name %>
+  body(ng-app="<%= name %>")
+    div(class=contents, ng-controller="TechnologyController")
+      h1 'Allo 'Allo 'Allo!
+      img(src="/images/yeoman.png")
+      h3 You got a new stack of HTML5 boilerplate using:
+      ul
+        li(ng-repeat="technology in technologies")
+          a(href="{{ technology.link }}") {{ technology.name }}          
+    script(src="/vendor/jquery/dist/jquery.js")
+    script(src="/vendor/angular/angular.js")  
+    script(src="/scripts/all.js")

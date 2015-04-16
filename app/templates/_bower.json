@@ -1,0 +1,17 @@
+{
+  "name": "<%= name %>",
+  "version": "0.0.1",
+  "main": "app.js",
+  "license": "MIT",
+  "ignore": [
+    "node_modules",
+    "public",
+    "build"
+  ],
+  "dependencies": {
+    "angular": "~1.2.0",
+    "angular-bootstrap": "0.12.1",
+    "angular-mocks": "~1.2.0",
+    "bootstrap": "~3.3.4"
+  }
+}
