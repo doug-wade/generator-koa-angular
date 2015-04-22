@@ -12,9 +12,9 @@ Make a new directory, and cd into it:
 
     mkdir $app-name && cd $_
 
-Run yo angular, including an app name:
+Run the generator, including an app name:
 
-    yo angular $app-name
+    yo koa-angular $app-name
 
 Run gulp to start the server, and navigate to localhost:3000.  See the generated README.md for detailed instructions on the how to run the generated tests.
 
