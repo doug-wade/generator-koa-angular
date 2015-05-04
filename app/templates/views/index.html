@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+    <%= name %>
+  </title>
+</head>
+
+<body ng-app="<%= name %>">
+  <div ng-controller="TechnologyController">
+    <h1>'Allo 'Allo 'Allo!</h1>
+    <img src="/images/yeoman.png">
+    <h3>You got a new stack of HTML5 boilerplate using:</h3>
+    <ul>
+      <li ng-repeat="technology in technologies">
+        <a href="{{ technology.link }}">{{ technology.name }}</a>
+      </li>
+    </ul>
+  </div>
+  <script src="/vendor/jquery/dist/jquery.js"></script>
+  <script src="/vendor/angular/angular.js">
+  </script>
+  <script src="/scripts/all.js"></script>
+</body>
+
+</html>

@@ -1,4 +1,3 @@
-# TODO: apiCtrl      = require "./api_ctrl.js"
 bodyParser   = require "koa-bodyparser"
 bunyan       = require "koa-bunyan"
 json         = require "koa-json"
@@ -26,6 +25,6 @@ app.use serve "public/"
 require("koa-qs")(app)
 
 app.use route.get "/", ->
-  @body = yield render "index.jade"
+  @redirect "/index.html"
 
 app.listen 3000

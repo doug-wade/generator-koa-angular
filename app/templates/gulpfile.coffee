@@ -5,16 +5,20 @@ del        = require "del"
 gulp       = require "gulp"
 imagemin   = require "gulp-imagemin"
 install    = require "gulp-install"
+<% if (templateEngine === "Jade") { %>
 jade       = require "gulp-jade"
+<% } %>
 karma      = require "karma"
 livereload = require "gulp-livereload"
 mocha      = require "gulp-mocha-co"
 ngHtml2Js  = require "gulp-ng-html2js"
 nodemon    = require "gulp-nodemon"
-pngquant   = require('imagemin-pngquant');
+pngquant   = require "imagemin-pngquant"
 protractor = require("gulp-protractor").protractor
 ptor       = require "protractor"
+<% if (cssPreprocessor === "Stylus") { %>
 stylus     = require "gulp-stylus"
+<% } %>
 uglify     = require "gulp-uglify"
 
 paths =
@@ -25,17 +29,19 @@ paths =
   karmaconf   : __dirname + "/karma.conf.js" # TODO: remove __dirname
   images      : "./images/**/*.*"
   packagejson : "./package.json"
-  partials    : "partials/*.jade"
+  partials    : <%= '"partials/*.' + templateExtension + '"'%>
   public      : "public"
   scripts     : "webapp/**/*.coffee"
   server      : "server/*.coffee"
   serverspecs : "test/server/*.spec.coffee"
   styles      : "./stylesheets/**/*.css"
-  views       : "views/*.jade"
+  views       : <%= '"views/*.' + templateExtension + '"' %>
 
 gulp.task "angular-views", ->
   gulp.src paths.partials
+<% if (templateEngine === "Jade") { %>
     .pipe jade()
+<% } %>
     .pipe ngHtml2Js(moduleName: "<%= name %>", prefix: "/partials/")
     .pipe concat "angular-views.min.js"
     .pipe gulp.dest paths.public + "/scripts"
@@ -110,7 +116,9 @@ gulp.task "styles", ->
 
 gulp.task "views", ->
   gulp.src paths.views
+<% if (templateEngine === "Jade") { %>
     .pipe jade()
+<% } %>
     .pipe gulp.dest paths.public
     .pipe livereload()
 

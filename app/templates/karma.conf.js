@@ -15,8 +15,8 @@ module.exports = function(config) {
     files: [
       "public/vendor/angular/angular.js",
       "public/vendor/angular-mocks/angular-mocks.js",
-      "webapp/**/*.coffee",
-      "test/unit/**/*.coffee"
+      <%= '"webapp/**/*.' + transpilerExtension + '",' %>
+      <%= '"test/unit/**/*.' + transpilerExtension + '"' %>
     ],
 
     // list of files to exclude
