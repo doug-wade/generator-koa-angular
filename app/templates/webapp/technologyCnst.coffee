@@ -1,6 +1,22 @@
 "use strict"
 
 technologies = [
+<% if (templateEngine === "Jade") { %>
+  {
+    "name": "Jade",
+    "link": "http://jade-lang.com/"
+  },
+<% } %>
+<% if (cssPreprocessor === "Stylus") { %>
+  {
+    "name": "Stylus",
+    "link": "http://learnboost.github.io/stylus/"
+  },
+<% } %>
+  {
+    "name": "Coffeescript",
+    "link": "http://coffeescript.org/"
+  },
   {
     "name": "gulp"
     "link": "http://gulpjs.com"

@@ -13,11 +13,6 @@
       "link": "http://jade-lang.com/"
     }, {
     <% } %>
-    <% if (jsTranspiler === 'Coffeescript') { %>
-      "name": "Coffeescript",
-      "link": "http://coffeescript.org/"
-    }, {
-    <% } %>
     <% if (cssPreprocessor === 'Stylus') { %>
       "name": "Stylus",
       "link": "http://learnboost.github.io/stylus/"

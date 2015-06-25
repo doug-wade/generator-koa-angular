@@ -30,13 +30,13 @@ paths = {
   karmaconf: __dirname + "/karma.conf.js",
   images: "./images/**/*.*",
   packagejson: "./package.json",
-  partials: <%= '"partials/*.' + templateExtension + '"' %>,
+  partials: "partials/*.<%= templateExtension %>",
   "public": "public",
   scripts: "webapp/**/*.js",
   server: "server/*.js",
   serverspecs: "test/server/*.spec.js",
   styles: "./stylesheets/**/*.css",
-  views: <%= '"views/*.' + templateExtension + '"' %>
+  views: "views/*.<%= templateExtension %>"
 };
 
 gulp.task("angular-views", function() {

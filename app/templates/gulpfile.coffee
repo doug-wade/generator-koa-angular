@@ -29,13 +29,13 @@ paths =
   karmaconf   : __dirname + "/karma.conf.js" # TODO: remove __dirname
   images      : "./images/**/*.*"
   packagejson : "./package.json"
-  partials    : <%= '"partials/*.' + templateExtension + '"'%>
+  partials    : "partials/*.<%= templateExtension %>"
   public      : "public"
   scripts     : "webapp/**/*.coffee"
   server      : "server/*.coffee"
   serverspecs : "test/server/*.spec.coffee"
   styles      : "./stylesheets/**/*.css"
-  views       : <%= '"views/*.' + templateExtension + '"' %>
+  views       : "views/*.<%= templateExtension %>"
 
 gulp.task "angular-views", ->
   gulp.src paths.partials
