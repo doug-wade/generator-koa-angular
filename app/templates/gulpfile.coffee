@@ -23,18 +23,18 @@ uglify     = require "gulp-uglify"
 
 paths =
   bower       : "public/vendor"
-  bowerjson   : "./bower.json"
+  bowerjson   : "bower.json"
   build       : "build"
   e2especs    : "test/e2e/*.scenarios.coffee"
-  karmaconf   : __dirname + "/karma.conf.js" # TODO: remove __dirname
-  images      : "./images/**/*.*"
-  packagejson : "./package.json"
+  karmaconf   : "karma.conf.js"
+  images      : "images/**/*.*"
+  packagejson : "package.json"
   partials    : "partials/*.<%= templateExtension %>"
   public      : "public"
   scripts     : "webapp/**/*.coffee"
   server      : "server/*.coffee"
   serverspecs : "test/server/*.spec.coffee"
-  styles      : "./stylesheets/**/*.css"
+  styles      : "styles/*.<%= stylesExtension %>"
   views       : "views/*.<%= templateExtension %>"
 
 gulp.task "angular-views", ->
@@ -111,7 +111,10 @@ gulp.task "scripts", ->
 
 gulp.task "styles", ->
   gulp.src paths.styles
-    .pipe gulp.dest paths.public + "/stylesheets"
+<% if (cssPreprocessor === "Stylus") { %>
+    .pipe stylus()
+<% } %>
+    .pipe gulp.dest paths.public + "/styles"
     .pipe livereload()
 
 gulp.task "views", ->

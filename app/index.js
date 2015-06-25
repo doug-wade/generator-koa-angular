@@ -47,6 +47,12 @@ module.exports = generators.Base.extend({
         this.transpilerExtension = "js";
       }
 
+      if (answers.cssPreprocessor === "Stylus") {
+        this.stylesExtension = "styl";
+      } else {
+        this.stylesExtension = "css";
+      }
+
       done();
     }.bind(this));
 
@@ -56,6 +62,7 @@ module.exports = generators.Base.extend({
         cssPreprocessor: this.cssPreprocessor,
         name: this.name,
         jsTranspiler: this.jsTranspiler,
+        stylesExtension: this.stylesExtension,
         templateEngine: this.templateEngine,
         templateExtension: this.templateExtension,
         transpilerExtension: this.transpilerExtension
@@ -100,6 +107,12 @@ module.exports = generators.Base.extend({
       this.template('views/index.jade', './views/index.jade', context);
     } else if (this.templateEngine === 'None'){
       this.template('views/index.html', './views/index.html', context);
+    }
+
+    if (this.cssPreprocessor === 'Stylus') {
+      this.template('styles/styles.styl', './styles/styles.styl', context);
+    } else if (this.cssPreprocessor === 'None'){
+      this.template('styles/styles.css', './styles/styles.css', context);
     }
 
     this.template('_bower.json', './bower.json', context);

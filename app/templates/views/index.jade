@@ -2,14 +2,23 @@ doctype html
 html(lang="en")
   head
     title <%= name %>
+    link(rel="stylesheet", type="text/css", href="vendor/bootstrap/dist/css/bootstrap.css")
+    link(rel="stylesheet", type="text/css", href="styles/styles.css")
   body(ng-app="<%= name %>")
-    div(class=contents, ng-controller="TechnologyController")
-      h1 'Allo 'Allo 'Allo!
-      img(src="/images/yeoman.png")
+    nav(class="navbar navbar-default")
+      div(class="container-fluid")
+        div(class="navbar-header")
+          a(class="navbar-brand", href="#")
+            img(alt="Brand", src="/images/yeoman.png")
+          ul(class="nav navbar-nav")
+            - for (var x = 0; x < 3; x++)
+              li
+                a(href="#") 'Allo
+    div(class="contents", ng-controller="TechnologyController")
       h3 You got a new stack of HTML5 boilerplate using:
       ul
         li(ng-repeat="technology in technologies")
-          a(href="{{ technology.link }}") {{ technology.name }}          
+          a(class="btn btn-link", href="{{ technology.link }}") {{ technology.name }}          
     script(src="/vendor/jquery/dist/jquery.js")
     script(src="/vendor/angular/angular.js")  
     script(src="/scripts/all.js")

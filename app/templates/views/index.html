@@ -5,16 +5,18 @@
   <title>
     <%= name %>
   </title>
+  <link rel="stylesheet" type="text/css" href="vendor/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="styles/styles.css" />
 </head>
 
 <body ng-app="<%= name %>">
   <div ng-controller="TechnologyController">
     <h1>'Allo 'Allo 'Allo!</h1>
-    <img src="/images/yeoman.png">
+    <img src="/images/yeoman.png" align="middle">
     <h3>You got a new stack of HTML5 boilerplate using:</h3>
     <ul>
       <li ng-repeat="technology in technologies">
-        <a href="{{ technology.link }}">{{ technology.name }}</a>
+        <a class="btn btn-link" href="{{ technology.link }}">{{ technology.name }}</a>
       </li>
     </ul>
   </div>
