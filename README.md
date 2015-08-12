@@ -1,6 +1,6 @@
 # generator-koa-angular [![Build Status](https://secure.travis-ci.org/prekolna/generator-koa-angular.svg?branch=master)](https://travis-ci.org/prekolna/generator-koa-angular)[![dependencies](https://david-dm.org/prekolna/generator-koa-angular.svg)](https://david-dm.org/prekolna/generator-koa-angular)
 
-A [Yeoman](http://yeoman.io/) generator for using [Koa.js](http://koajs.com/) with [Angular.js](https://angularjs.org/). See [the example repository](https://github.com/prekolna/example-koa-angular) to browse the generated boilerplate.
+A [Yeoman](http://yeoman.io/) generator for using [Koa.js](http://koajs.com/) with [Angular.js](https://angularjs.org/). See [the example repository](https://github.com/prekolna/example-koa-angular) to browse the generated boilerplate, or see [the example site live](dougwade.io).
 
 # Usage
 
