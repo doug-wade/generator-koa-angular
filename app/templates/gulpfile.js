@@ -2,25 +2,22 @@ var bower, concat, del, gulp, imagemin, install,<% if (templateEngine === "Jade"
 
 bower      = require("gulp-bower");
 concat     = require("gulp-concat");
+david      = require("gulp-david");
 del        = require("del");
 gulp       = require("gulp");
 imagemin   = require("gulp-imagemin");
-install    = require("gulp-install");
-<% if (templateEngine === "Jade") { %>
+install    = require("gulp-install");<% if (templateEngine === "Jade") { %>
 jade       = require("gulp-jade");
-<% } %>
-karma      = require("karma");
+<% } %>karma      = require("karma");
 livereload = require("gulp-livereload");
 mocha      = require("gulp-mocha-co");
 ngHtml2Js  = require("gulp-ng-html2js");
 nodemon    = require("gulp-nodemon");
 pngquant   = require('imagemin-pngquant');
 protractor = require("gulp-protractor").protractor;
-ptor       = require("protractor");
-<% if (cssPreprocessor === "Stylus") { %>
+ptor       = require("protractor");<% if (cssPreprocessor === "Stylus") { %>
 stylus     = require("gulp-stylus");
-<% } %>
-uglify     = require("gulp-uglify");
+<% } %>uglify     = require("gulp-uglify");
 
 paths = {
   bower: "public/vendor",
@@ -31,7 +28,7 @@ paths = {
   images: "./images/**/*.*",
   packagejson: "./package.json",
   partials: "partials/*.<%= templateExtension %>",
-  "public": "public",
+  public: "public",
   scripts: "webapp/**/*.js",
   server: "server/*.js",
   serverspecs: "test/server/*.spec.js",
@@ -48,6 +45,12 @@ gulp.task("angular-views", function() {
 
 gulp.task("bower", function() {
   return gulp.src([paths.bowerjson]).pipe(install());
+});
+
+gulp.task("checkDependencies", function() {
+  return gulp.src("package.json")
+    .pipe(david())
+    .pipe(david.reporter)
 });
 
 gulp.task("clean", function() {
@@ -92,7 +95,7 @@ gulp.task("server", function() {
   return nodemon({
     script: paths.build + "/app.js",
     nodeArgs: ["--harmony"],
-    ignore: ["./bower_components/**", "./node_modules/**", "./public/**", "./src/**", "./test/**", "./views/**", "./images/**"]
+    ignore: ["images", "node_modules", "public", "server", "styles", "test", "views", "webapp"]
   });
 });
 

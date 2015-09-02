@@ -20,7 +20,7 @@ app.use(bunyan(logger, {
 }));
 
 app.use(json());
-app.use(session());
+app.use(session(app));
 app.use(livereload());
 app.use(bodyParser());
 

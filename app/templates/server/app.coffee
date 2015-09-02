@@ -17,7 +17,7 @@ app.use bunyan(logger,
     timeLimit: 250
   )
 app.use json()
-app.use session()
+app.use session(app)
 app.use livereload()
 app.use bodyParser()
 render = views "views/"

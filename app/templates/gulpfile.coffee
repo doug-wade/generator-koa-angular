@@ -1,25 +1,22 @@
 bower      = require "gulp-bower"
 coffee     = require "gulp-coffee"
 concat     = require "gulp-concat"
+david      = require "gulp-david"
 del        = require "del"
 gulp       = require "gulp"
 imagemin   = require "gulp-imagemin"
-install    = require "gulp-install"
-<% if (templateEngine === "Jade") { %>
+install    = require "gulp-install"<% if (templateEngine === "Jade") { %>
 jade       = require "gulp-jade"
-<% } %>
-karma      = require "karma"
+<% } %>karma      = require "karma"
 livereload = require "gulp-livereload"
 mocha      = require "gulp-mocha-co"
 ngHtml2Js  = require "gulp-ng-html2js"
 nodemon    = require "gulp-nodemon"
 pngquant   = require "imagemin-pngquant"
 protractor = require("gulp-protractor").protractor
-ptor       = require "protractor"
-<% if (cssPreprocessor === "Stylus") { %>
+ptor       = require "protractor"<% if (cssPreprocessor === "Stylus") { %>
 stylus     = require "gulp-stylus"
-<% } %>
-uglify     = require "gulp-uglify"
+<% } %>uglify     = require "gulp-uglify"
 
 paths =
   bower       : "public/vendor"
@@ -38,11 +35,9 @@ paths =
   views       : "views/*.<%= templateExtension %>"
 
 gulp.task "angular-views", ->
-  gulp.src paths.partials
-<% if (templateEngine === "Jade") { %>
+  gulp.src paths.partials<% if (templateEngine === "Jade") { %>
     .pipe jade()
-<% } %>
-    .pipe ngHtml2Js(moduleName: "<%= name %>", prefix: "/partials/")
+<% } %>    .pipe ngHtml2Js(moduleName: "<%= name %>", prefix: "/partials/")
     .pipe concat "angular-views.min.js"
     .pipe gulp.dest paths.public + "/scripts"
     .pipe livereload()
@@ -54,6 +49,11 @@ gulp.task "bower", ->
 gulp.task "clean", ->
   del([paths.build, paths.public], (err, deletedFiles) ->
     console.log('Cleaned files:', deletedFiles.join(', ')))
+
+gulp.task "checkDependencies", ->
+  gulp.src "package.json"
+    .pipe david()
+    .pipe david.reporter
 
 gulp.task "images", ->
   gulp.src paths.images
@@ -86,15 +86,7 @@ gulp.task "server", ->
   nodemon
     script: paths.build + "/app.js"
     nodeArgs: [ "--harmony" ]
-    ignore: [
-      "./bower_components/**"
-      "./node_modules/**"
-      "./public/**"
-      "./src/**"
-      "./test/**"
-      "./views/**"
-      "./images/**"
-    ]
+    ignore: ["images", "node_modules", "public", "server", "styles", "test", "views", "webapp"]
 
 gulp.task "server-scripts", ->
   gulp.src paths.server
@@ -110,19 +102,15 @@ gulp.task "scripts", ->
     .pipe livereload()
 
 gulp.task "styles", ->
-  gulp.src paths.styles
-<% if (cssPreprocessor === "Stylus") { %>
+  gulp.src paths.styles<% if (cssPreprocessor === "Stylus") { %>
     .pipe stylus()
-<% } %>
-    .pipe gulp.dest paths.public + "/styles"
+<% } %>    .pipe gulp.dest paths.public + "/styles"
     .pipe livereload()
 
 gulp.task "views", ->
-  gulp.src paths.views
-<% if (templateEngine === "Jade") { %>
+  gulp.src paths.views<% if (templateEngine === "Jade") { %>
     .pipe jade()
-<% } %>
-    .pipe gulp.dest paths.public
+<% } %>    .pipe gulp.dest paths.public
     .pipe livereload()
 
 gulp.task "watch", ->
