@@ -51,7 +51,7 @@ gulp.task "clean", ->
     console.log('Cleaned files:', deletedFiles.join(', ')))
 
 gulp.task "checkDependencies", ->
-  gulp.src "package.json"
+  gulp.src paths.packagejson
     .pipe david()
     .pipe david.reporter
 
@@ -106,6 +106,12 @@ gulp.task "styles", ->
     .pipe stylus()
 <% } %>    .pipe gulp.dest paths.public + "/styles"
     .pipe livereload()
+
+gulp.task "upgradeDependencies", ->
+  gulp.src paths.packagejson
+    .pipe david(
+      update: true)
+    .pipe gulp.dest '.';
 
 gulp.task "views", ->
   gulp.src paths.views<% if (templateEngine === "Jade") { %>
