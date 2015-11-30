@@ -4,9 +4,9 @@ A [Yeoman](http://yeoman.io/) generator for using [Koa.js](http://koajs.com/) wi
 
 # Usage
 
-Install yo, grunt-cli, bower, generator-angular and generator-karma:
+Install yo, gulp, bower, generator-angular and generator-karma:
 
-    npm install -g grunt-cli bower yo generator-karma generator-angular
+    npm install -g gulp bower yo generator-koa-angular
 
 Make a new directory, and cd into it:
 

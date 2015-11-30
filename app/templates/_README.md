@@ -2,7 +2,7 @@ Generated using the [Yeoman](http://yeoman.io/) generator [koa-angular](https://
 
 # Prerequisites
 You must install:
-* any version of [io.js](https://iojs.org/) OR [node.js](https://nodejs.org/) version 0.12 or higher
+* any version of [node.js](https://nodejs.org/) version 0.12 or higher
 * [gulp](http://gulpjs.com) (npm install -g gulp gulp-cli)
 
 You should install:
