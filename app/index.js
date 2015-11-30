@@ -15,7 +15,7 @@ module.exports = generators.Base.extend({
       type    : 'list',
       name    : 'jsTranspiler',
       message : 'Which Javascript transpiler would you like to use?',
-      choices : [ 'Coffeescript', 'None' ],
+      choices : [ 'Coffeescript', 'Babel', 'None' ],
       default : 'Coffeescript'
     }, {
       type    : 'list',
@@ -87,6 +87,22 @@ module.exports = generators.Base.extend({
       this.template('webapp/technologyCtrl.coffee', 'webapp/technologyCtrl.coffee', context);
 
       this.template('gulpfile.coffee', './gulpfile.coffee', context);
+    } else if (this.jsTranspiler === 'Babel') {
+      this.template('_babelrc', './.babelrc', context);
+
+      this.template('server/app.es6', './server/app.js', context);
+      this.template('server/logger.es6', './server/logger.js', context);
+
+      this.template('test/e2e/technologies.scenarios.js', './test/e2e/technologies.scenarios.js', context);
+      this.template('test/server/app.spec.js', './test/server/app.spec.js', context);
+      this.template('test/unit/technologyCnst.spec.js', './test/unit/technologyCnst.spec.js', context);
+      this.template('test/unit/technologyCtrl.spec.js', './test/unit/technologyCtrl.spec.js', context);
+
+      this.template('webapp/app.es6', 'webapp/app.js', context);
+      this.template('webapp/technologyCnst.es6', 'webapp/technologyCnst.js', context);
+      this.template('webapp/technologyCtrl.es6', 'webapp/technologyCtrl.js', context);
+
+      this.template('gulpfile.es6', './gulpfile.js', context);
     } else if (this.jsTranspiler === 'None') {
       this.template('server/app.js', './server/app.js', context);
       this.template('server/logger.js', './server/logger.js', context);
