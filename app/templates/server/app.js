@@ -1,7 +1,8 @@
-var app, bodyParser, bunyan, json, koa, livereload, logger, parse, render, route, serve, session, views;
+var app, bodyParser, bunyan, gzip, json, koa, livereload, logger, parse, render, route, serve, session, views;
 
 bodyParser = require("koa-bodyparser");
 bunyan     = require("koa-bunyan");
+gzip       = require("koa-gzip");
 json       = require("koa-json");
 koa        = require("koa");
 livereload = require("koa-livereload");
@@ -19,6 +20,7 @@ app.use(bunyan(logger, {
   timeLimit: 250
 }));
 
+app.use(gzip());
 app.use(json());
 app.use(session(app));
 app.use(livereload());
