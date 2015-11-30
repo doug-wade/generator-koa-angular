@@ -14,11 +14,18 @@ If you want to continuously run the tests while developing, you may also want:
 * [mocha](http://mochajs.org/) (npm install -g mocha)
 
 # Starting the server
+
     npm install
     gulp
 
 then navigate to localhost:3000 in your favorite browser.  If you installed the [bunyan](https://github.com/trentm/node-bunyan) cli, then pipe the logs through bunyan to make them more readable:
+
     gulp | bunyan
+
+In production, you should consider using [pm2](http://pm2.keymetrics.io/) to start the server to do clustering and monitoring:
+
+    npm install -g pm2
+    pm2 start ./build/app.js -i 0 --name "koa-angular"
 
 # Running the tests
 
@@ -37,11 +44,14 @@ Check out the generated gulpfile to discover all the tasks you can run.  Most ar
     # See if any dependencies are out of date
     gulp checkDependencies
 
+    # Upgrade any out of date dependencies and save them to package.json
+    gulp upgradeDependencies
+
     # Remove all the generated build code
     gulp clean
 
-### Note for Node.js
-The gulp mocha target uses generators, which require the --harmony flag on Node.js.  So, to invoke the mocha task or the test task, gulp must be invoked using node, e.g.
+### Note for Node.js v0.x
+The gulp mocha target uses generators, which require the --harmony flag on Node.js v0.x.  So, to invoke the mocha task or the test task, gulp must be invoked using node, e.g.
 
     node --harmony `which gulp` test
     node --harmony `which gulp` mocha
