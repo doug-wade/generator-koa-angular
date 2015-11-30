@@ -8,9 +8,31 @@
     "node_modules",
     "bower_components"
   ],
-  "devDependencies": {
-    "clone-stats": "0.0.1",
-    "gulp": "^3.5.5",<% if (jsTranspiler === "Coffeescript") { %>
+  "devDependencies": {<% if (jsTranspiler === "Babel") { %>
+    "babel-plugin-syntax-async-generators": "^6.1.18",
+    "babel-plugin-check-es2015-constants": "^6.1.18",
+    "babel-plugin-transform-es2015-arrow-functions": "^6.1.18",
+    "babel-plugin-transform-es2015-block-scoped-functions": "^6.1.18",
+    "babel-plugin-transform-es2015-block-scoping": "^6.1.18",
+    "babel-plugin-transform-es2015-classes": "^6.1.18",
+    "babel-plugin-transform-es2015-computed-properties": "^6.1.18",
+    "babel-plugin-transform-es2015-destructuring": "^6.1.18",
+    "babel-plugin-transform-es2015-for-of": "^6.1.18",
+    "babel-plugin-transform-es2015-function-name": "^6.1.18",
+    "babel-plugin-transform-es2015-literals": "^6.1.18",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.1.18",
+    "babel-plugin-transform-es2015-object-super": "^6.1.18",
+    "babel-plugin-transform-es2015-parameters": "^6.1.18",
+    "babel-plugin-transform-es2015-shorthand-properties": "^6.1.18",
+    "babel-plugin-transform-es2015-spread": "^6.1.18",
+    "babel-plugin-transform-es2015-sticky-regex": "^6.1.18",
+    "babel-plugin-transform-es2015-template-literals": "^6.1.18",
+    "babel-plugin-transform-es2015-typeof-symbol": "^6.1.18",
+    "babel-plugin-transform-es2015-unicode-regex": "^6.1.18",
+<% } %>    "clone-stats": "0.0.1",
+    "gulp": "^3.5.5",<% if (jsTranspiler === "Babel") { %>
+    "gulp-babel": "^6.1.1",
+<% } %><% if (jsTranspiler === "Coffeescript") { %>
     "gulp-coffee": "^2.3.1",
 <% } %>    "gulp-concat": "^2.1.7",
     "gulp-david": "^0.3.4",<% if (templateEngine === "Jade") { %>

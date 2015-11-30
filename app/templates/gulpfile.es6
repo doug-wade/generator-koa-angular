@@ -1,25 +1,27 @@
-var bower, concat, del, gulp, imagemin, install,<% if (templateEngine === "Jade") { %> jade,<% } %> karma, livereload, mocha, ngHtml2Js, nodemon, paths, pngquant, protractor, ptor,<% if (cssPreprocessor === "Stylus") { %> stylus,<% } %> uglify;
+"use strict";
 
-bower      = require("gulp-bower");
-concat     = require("gulp-concat");
-david      = require("gulp-david");
-del        = require("del");
-gulp       = require("gulp");
-imagemin   = require("gulp-imagemin");
-install    = require("gulp-install");<% if (templateEngine === "Jade") { %>
-jade       = require("gulp-jade");
-<% } %>karma      = require("karma");
-livereload = require("gulp-livereload");
-mocha      = require("gulp-mocha-co");
-ngHtml2Js  = require("gulp-ng-html2js");
-nodemon    = require("gulp-nodemon");
-pngquant   = require('imagemin-pngquant');
-protractor = require("gulp-protractor").protractor;
-ptor       = require("protractor");<% if (cssPreprocessor === "Stylus") { %>
-stylus     = require("gulp-stylus");
-<% } %>uglify     = require("gulp-uglify");
+let babel      = require('gulp-babel');
+let bower      = require("gulp-bower");
+let concat     = require("gulp-concat");
+let david      = require("gulp-david");
+let del        = require("del");
+let gulp       = require("gulp");
+let imagemin   = require("gulp-imagemin");
+let install    = require("gulp-install");<% if (templateEngine === "Jade") { %>
+let jade       = require("gulp-jade");
+<% } %>let karma      = require("karma");
+let livereload = require("gulp-livereload");
+let mocha      = require("gulp-mocha-co");
+let ngHtml2Js  = require("gulp-ng-html2js");
+let nodemon    = require("gulp-nodemon");
+let path       = require("path");
+let pngquant   = require("imagemin-pngquant");
+let protractor = require("gulp-protractor").protractor;
+let ptor       = require("protractor");<% if (cssPreprocessor === "Stylus") { %>
+let stylus     = require("gulp-stylus");
+<% } %>let uglify     = require("gulp-uglify");
 
-paths = {
+let paths = {
   bower: "public/vendor",
   bowerjson: "./bower.json",
   build: "build",
@@ -36,15 +38,21 @@ paths = {
   views: "views/*.<%= templateExtension %>"
 };
 
-gulp.task("angular-views", function() {
-  return gulp.src(paths.partials)<% if (templateEngine === "Jade") { %>.pipe(jade())<% } %>.pipe(ngHtml2Js({
-    moduleName: "<%= name %>",
-    prefix: "/partials/"
-  })).pipe(concat("angular-views.min.js")).pipe(gulp.dest(paths["public"] + "/scripts")).pipe(livereload());
+gulp.task("angular-views", () => {
+  return gulp.src(paths.partials)
+    <% if (templateEngine === "Jade") { %>.pipe(jade())<% } %>
+    .pipe(ngHtml2Js({
+      moduleName: "<%= name %>",
+      prefix: "/partials/"
+    }))
+    .pipe(concat("angular-views.min.js"))
+    .pipe(gulp.dest(path.join(paths.public, "scripts")))
+    .pipe(livereload());
 });
 
-gulp.task("bower", function() {
-  return gulp.src([paths.bowerjson]).pipe(install());
+gulp.task("bower", () => {
+  return gulp.src([paths.bowerjson])
+    .pipe(install());
 });
 
 gulp.task("checkDependencies", function() {
@@ -57,7 +65,7 @@ gulp.task("upgradeDependencies", function() {
   gulp.src(paths.packagejson)
     .pipe(david({ update: true }))
     .pipe(gulp.dest('.'));
-}
+});
 
 gulp.task("clean", function() {
   return del([paths.build, paths["public"]], function(err, deletedFiles) {
@@ -66,10 +74,13 @@ gulp.task("clean", function() {
 });
 
 gulp.task("images", function() {
-  return gulp.src(paths.images).pipe(imagemin({
-    optimizationLevel: 5,
-    use: [pngquant()]
-  })).pipe(gulp.dest(paths["public"] + "/images")).pipe(livereload());
+  return gulp.src(paths.images)
+    .pipe(imagemin({
+      optimizationLevel: 5,
+      use: [pngquant()]
+    }))
+    .pipe(gulp.dest(path.join(paths.public + "/images")))
+    .pipe(livereload());
 });
 
 gulp.task("karma", function(done) {
@@ -80,13 +91,15 @@ gulp.task("karma", function(done) {
 });
 
 gulp.task("mocha", function() {
-  return gulp.src(paths.serverspecs).pipe(mocha({
-    reporter: "nyan"
-  }));
+  return gulp.src(paths.serverspecs)
+    .pipe(mocha({
+      reporter: "nyan"
+    }));
 });
 
 gulp.task("npm", function() {
-  return gulp.src([paths.packagejson]).pipe(install());
+  return gulp.src([paths.packagejson])
+    .pipe(install());
 });
 
 gulp.task("protractor", ["webdriver_update", "webdriver_standalone"], function() {
@@ -106,19 +119,31 @@ gulp.task("server", function() {
 });
 
 gulp.task("server-scripts", function() {
-  return gulp.src(paths.server).pipe(gulp.dest(paths.build));
+  return gulp.src(paths.server)
+    .pipe(babel())
+    .pipe(gulp.dest(paths.build));
 });
 
 gulp.task("scripts", function() {
-  return gulp.src(paths.scripts).pipe(concat("all.js")).pipe(uglify()).pipe(gulp.dest(paths["public"] + "/scripts")).pipe(livereload());
+  return gulp.src(paths.scripts)
+    .pipe(babel())
+    .pipe(concat("all.js"))
+    .pipe(uglify())
+    .pipe(gulp.dest(paths["public"] + "/scripts"))
+    .pipe(livereload());
 });
 
 gulp.task("styles", function() {
-  return gulp.src(paths.styles).pipe(gulp.dest(paths["public"] + "/stylesheets")).pipe(livereload());
+  return gulp.src(paths.styles)
+    .pipe(gulp.dest(paths["public"] + "/stylesheets"))
+    .pipe(livereload());
 });
 
 gulp.task("views", function() {
-  return gulp.src(paths.views)<% if (templateEngine === "Jade") { %>.pipe(jade())<% } %>.pipe(gulp.dest(paths["public"])).pipe(livereload());
+  return gulp.src(paths.views)
+    <% if (templateEngine === "Jade") { %>.pipe(jade())<% } %>
+    .pipe(gulp.dest(paths.public))
+    .pipe(livereload());
 });
 
 gulp.task("watch", function() {
