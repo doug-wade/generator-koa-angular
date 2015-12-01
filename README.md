@@ -2,9 +2,10 @@
 
 A [Yeoman](http://yeoman.io/) generator for using [Koa.js](http://koajs.com/) with [Angular.js](https://angularjs.org/). See [the example repository](https://github.com/prekolna/example-koa-angular) to browse the generated boilerplate, or see [the example site live](http://dougwade.io).
 
+
 # Usage
 
-Install yo, gulp, bower, generator-angular and generator-karma:
+Install yo, gulp, bower, and generator-koa-angular:
 
     npm install -g gulp bower yo generator-koa-angular
 
@@ -18,15 +19,18 @@ Run the generator, including an app name:
 
 Run gulp to start the server, and navigate to localhost:3000.  See the generated README.md for detailed instructions on the how to run the generated tests.
 
+
 # Generators
 
 Currently, the generator only supports scaffolding of the full application with a name:
 
     yo koa-angular $app-name
 
+
 # Contributing
 
 Please submit your issues, ideas, and PRs!  Any help is appreciated.
+
 
 ## Testing
 
@@ -40,10 +44,12 @@ Then generate a app as usual:
 
 If you don't want to re-install the deps every time, you can regenerate the app over your existing code and it will build much faster, but make sure to test it in an empty directory with all the bells and whistles before you send a PR.
 
+
 ## Style Guide
 
 This project uses double quotes, two space indentation, and uses of curly braces and parentheses only where required for
 clarity.  I might not have followed these standards everywhere -- bonus points for including style improvements in PRs.
+
 
 ## PR Guide
 
@@ -53,10 +59,13 @@ clarity.  I might not have followed these standards everywhere -- bonus points f
 * Non-trivial refactorization should be discussed in an issue first
 * Include a compelling description of your PR's purpose
 
+
 ## Planned features
 
 * Less and Sass support
-* Babel support
+* eslint support
+* support broccoli and grunt as options, in addition to gulp
+
 
 # License
 
