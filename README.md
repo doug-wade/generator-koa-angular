@@ -60,13 +60,6 @@ clarity.  I might not have followed these standards everywhere -- bonus points f
 * Include a compelling description of your PR's purpose
 
 
-## Planned features
-
-* Less and Sass support
-* eslint support
-* support broccoli and grunt as options, in addition to gulp
-
-
 # License
 
 Licensed under the [MIT License](http://opensource.org/licenses/mit-license.php)
