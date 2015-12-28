@@ -1,5 +1,5 @@
 # generator-koa-angular
-[![Build Status](https://secure.travis-ci.org/doug-wade/generator-koa-angular.svg?branch=master)](https://travis-ci.org/doug-wade/generator-koa-angular)[![dependencies](https://david-dm.org/doug-wade/generator-koa-angular.svg)](https://david-dm.org/doug-wade/generator-koa-angular)[![npm version](https://badge.fury.io/js/generator-koa-angular.svg)](https://badge.fury.io/js/generator-koa-angular)
+[![Build Status](https://secure.travis-ci.org/doug-wade/generator-koa-angular.svg?branch=master)](https://travis-ci.org/doug-wade/generator-koa-angular)[![dependencies](https://david-dm.org/doug-wade/generator-koa-angular.svg)](https://david-dm.org/doug-wade/generator-koa-angular)[![npm version](https://badge.fury.io/js/generator-koa-angular.svg)](https://badge.fury.io/js/generator-koa-angular)[![Support via Gratipay](https://cdn.rawgit.com/gratipay/gratipay-badge/2.3.0/dist/gratipay.svg)](https://gratipay.com/~doug-wade/)
 
 A [Yeoman](http://yeoman.io/) generator for using [Koa.js](http://koajs.com/) with [Angular.js](https://angularjs.org/). See [the example repository](https://github.com/doug-wade/example-koa-angular) to browse the generated boilerplate, or see [the example site live](http://dougwade.io).
 
