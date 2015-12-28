@@ -30,35 +30,7 @@ Currently, the generator only supports scaffolding of the full application with 
 
 # Contributing
 
-Please submit your issues, ideas, and PRs!  Any help is appreciated.
-
-
-## Testing
-
-You can generate a local generator for debugging and testing by linking the generator:
-
-    npm link
-
-Then generate a app as usual:
-
-    yo koa-angular test-app
-
-If you don't want to re-install the deps every time, you can regenerate the app over your existing code and it will build much faster, but make sure to test it in an empty directory with all the bells and whistles before you send a PR.
-
-
-## Style Guide
-
-This project uses double quotes, two space indentation, and uses of curly braces and parentheses only where required for
-clarity.  I might not have followed these standards everywhere -- bonus points for including style improvements in PRs.
-
-
-## PR Guide
-
-* Do your development on a feature branch
-* Rebase onto the latest commit immediately before submitting
-* Squash your commits
-* Non-trivial refactorization should be discussed in an issue first
-* Include a compelling description of your PR's purpose
+Please submit your issues, ideas, and PRs!  Any help is appreciated.  See CONTRIBUTING.md for more details
 
 
 # License
