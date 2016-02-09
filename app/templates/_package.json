@@ -35,7 +35,8 @@
 <% } %><% if (jsTranspiler === "Coffeescript") { %>
     "gulp-coffee": "^2.3.1",
 <% } %>    "gulp-concat": "^2.1.7",
-    "gulp-david": "^0.3.4",<% if (templateEngine === "Jade") { %>
+    "gulp-david": "^0.3.4",
+    "gulp-eslint": "1.1.1",<% if (templateEngine === "Jade") { %>
     "gulp-jade": "^1.0.0",
 <% } %>    "gulp-livereload": "^3.8.0",
     "gulp-mocha": "^2.0.1",

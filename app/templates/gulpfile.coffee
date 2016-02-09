@@ -3,6 +3,7 @@ coffee     = require "gulp-coffee"
 concat     = require "gulp-concat"
 david      = require "gulp-david"
 del        = require "del"
+eslint     = require "gulp-eslint"
 gulp       = require "gulp"
 imagemin   = require "gulp-imagemin"
 install    = require "gulp-install"<% if (templateEngine === "Jade") { %>
@@ -69,6 +70,24 @@ gulp.task "karma", (done) ->
     singleRun: true
   , done)
 
+gulp.task "lint-client", ->
+  gulp.src paths.server
+    .pipe eslint(
+      extends: "eslint:recommended",
+      envs: [
+        "browser"
+      ]
+    )
+
+gulp.task "lint-server", ->
+  gulp.src paths.server
+    .pipe eslint(
+      extends: "eslint:recommended",
+      envs: [
+        "node"
+      ]
+    )
+
 gulp.task "mocha", ->
   gulp.src paths.serverspecs
     .pipe mocha(reporter: "nyan")
@@ -129,12 +148,10 @@ gulp.task "watch", ->
   gulp.watch paths.server      , [ "server-scripts" ]
   gulp.watch paths.views       , [ "views" ]
 
-# Run the selenium webdriver
 gulp.task "webdriver_standalone", ptor.webdriver_standalone
-
-# Download the selenium webdriver
 gulp.task "webdriver_update", ptor.webdriver_update
 
+gulp.task "lint", [ "lint-server", "lint-client" ]
 gulp.task "compile", [ "bower", "images", "views", "styles", "scripts", "server-scripts" ]
 gulp.task "default", [ "compile", "watch", "server" ]
 gulp.task "test", [ "mocha", "karma", "protractor" ]

@@ -5,6 +5,7 @@ let bower      = require("gulp-bower");
 let concat     = require("gulp-concat");
 let david      = require("gulp-david");
 let del        = require("del");
+let eslint     = require("gulp-eslint");
 let gulp       = require("gulp");
 let imagemin   = require("gulp-imagemin");
 let install    = require("gulp-install");<% if (templateEngine === "Jade") { %>
@@ -90,6 +91,26 @@ gulp.task("karma", function(done) {
   }, done);
 });
 
+gulp.task("lint-client", function() {
+  gulp.src(paths.server)
+    .pipe(eslint({
+      extends: "eslint:recommended",
+      envs: [
+        "browser"
+      ]
+    }))
+});
+
+gulp.task("lint-server", function() {
+  gulp.src(paths.server)
+    .pipe(eslint({
+      extends: "eslint:recommended",
+      envs: [
+        "node"
+      ]
+    }))
+});
+
 gulp.task("mocha", function() {
   return gulp.src(paths.serverspecs)
     .pipe(mocha({
@@ -159,6 +180,8 @@ gulp.task("watch", function() {
 
 gulp.task("webdriver_standalone", ptor.webdriver_standalone);
 gulp.task("webdriver_update", ptor.webdriver_update);
+
+gulp.task("lint", ["lint-server", "lint-client"]);
 gulp.task("compile", ["bower", "images", "views", "styles", "scripts", "server-scripts"]);
 gulp.task("default", ["compile", "watch", "server"]);
 gulp.task("test", ["mocha", "karma", "protractor"]);
