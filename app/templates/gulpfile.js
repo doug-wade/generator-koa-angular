@@ -58,7 +58,7 @@ gulp.task("upgradeDependencies", function() {
   gulp.src(paths.packagejson)
     .pipe(david({ update: true }))
     .pipe(gulp.dest('.'));
-}
+});
 
 gulp.task("clean", function() {
   return del([paths.build, paths["public"]], function(err, deletedFiles) {
