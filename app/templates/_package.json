@@ -8,6 +8,9 @@
     "node_modules",
     "bower_components"
   ],
+  "scripts": {
+    "start": "gulp"
+  },
   "devDependencies": {<% if (jsTranspiler === "Babel") { %>
     "babel-plugin-syntax-async-generators": "^6.1.18",
     "babel-plugin-check-es2015-constants": "^6.1.18",
