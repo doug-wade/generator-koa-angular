@@ -29,6 +29,6 @@
   },
   "homepage": "https://github.com/prekolna/generator-koa-angular",
   "dependencies": {
-    "yeoman-generator": "^0.22.2"
+    "yeoman-generator": "^0.24.1"
   }
 }
